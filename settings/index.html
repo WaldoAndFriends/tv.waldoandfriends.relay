@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 20px;
+      color: #333;
+    }
+    h1 { font-size: 1.4em; margin-bottom: 20px; }
+    .field { margin-bottom: 20px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; }
+    .hint { font-size: 0.85em; color: #666; margin-top: 4px; }
+    input[type="number"] {
+      width: 100px; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px;
+      font-size: 1em;
+    }
+    button {
+      padding: 10px 24px; background: #333f48; color: #fff; border: none;
+      border-radius: 4px; font-size: 1em; cursor: pointer; margin-top: 10px;
+    }
+    button:hover { background: #4a5868; }
+    button.secondary {
+      background: #666; margin-left: 10px;
+    }
+    button.secondary:hover { background: #888; }
+    .status {
+      margin-top: 20px; padding: 12px; background: #f5f5f5; border-radius: 4px;
+      font-size: 0.9em; color: #555;
+    }
+    .status strong { color: #333; }
+    .saved { color: #2e7d32; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Relay.fm Settings</h1>
+
+  <div class="field">
+    <label for="pollInterval">Polling Interval (minutes)</label>
+    <input type="number" id="pollInterval" min="1" step="1" value="15" />
+    <div class="hint">How often to check for new episodes. Minimum: 1 minute. Default: 15 minutes.</div>
+  </div>
+
+  <div>
+    <button id="save">Save Settings</button>
+    <button id="checkNow" class="secondary">Check Now</button>
+    <span id="savedMsg" class="saved" style="display:none; margin-left:12px;">Saved!</span>
+  </div>
+
+  <div class="status" id="status">
+    <strong>Last poll:</strong> <span id="lastPoll">Loading...</span>
+  </div>
+
+  <script>
+    function onHomeyReady(Homey) {
+      Homey.get('pollInterval', function(err, value) {
+        if (!err && value != null) {
+          document.getElementById('pollInterval').value = value;
+        }
+      });
+
+      Homey.get('lastPollTime', function(err, value) {
+        if (!err && value) {
+          document.getElementById('lastPoll').textContent = new Date(value).toLocaleString();
+        } else {
+          document.getElementById('lastPoll').textContent = 'Not yet polled';
+        }
+      });
+
+      document.getElementById('save').addEventListener('click', function(e) {
+        e.preventDefault();
+        var interval = parseInt(document.getElementById('pollInterval').value, 10);
+        if (isNaN(interval) || interval < 1) {
+          interval = 1;
+          document.getElementById('pollInterval').value = 1;
+        }
+        Homey.set('pollInterval', interval, function(err) {
+          if (err) return Homey.alert(err.message);
+          var msg = document.getElementById('savedMsg');
+          msg.style.display = 'inline';
+          setTimeout(function() { msg.style.display = 'none'; }, 2000);
+        });
+      });
+
+      document.getElementById('checkNow').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('lastPoll').textContent = 'Checking...';
+        Homey.api('POST', '/check', {}, function(err, result) {
+          if (err) return Homey.alert(err.message);
+          document.getElementById('lastPoll').textContent = new Date().toLocaleString();
+        });
+      });
+
+      Homey.ready();
+    }
+  </script>
+</body>
+</html>

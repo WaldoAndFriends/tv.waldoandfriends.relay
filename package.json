@@ -1,0 +1,16 @@
+{
+  "name": "tv.waldoandfriends.relay",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts --ignore-path .gitignore ."
+  },
+  "devDependencies": {
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.12",
+    "eslint": "^7.32.0",
+    "eslint-config-athom": "^3.1.5"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.7.3"
+  }
+}

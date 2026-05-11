@@ -1,0 +1,248 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "tv.waldoandfriends.relay",
+  "version": "1.0.3",
+  "compatibility": ">=12.4.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "brandColor": "#333f48",
+  "name": {
+    "en": "Relay.fm"
+  },
+  "description": {
+    "en": "Keep up-to-date with Relay.fm podcasts"
+  },
+  "category": [
+    "internet"
+  ],
+  "permissions": [],
+  "api": {
+    "check": {
+      "method": "POST",
+      "path": "/check"
+    }
+  },
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Wouter Janson-Korhorn",
+    "email": "wouterjanson@icloud.com"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "title": {
+          "en": "A new episode is released"
+        },
+        "titleFormatted": {
+          "en": "A new episode of [[show]] is released"
+        },
+        "hint": {
+          "en": "Triggers when a new Relay.fm podcast episode is published"
+        },
+        "tokens": [
+          {
+            "name": "episode_title",
+            "type": "string",
+            "title": {
+              "en": "Episode Title"
+            },
+            "example": "178: The Process of Investigative Reporting"
+          },
+          {
+            "name": "episode_url",
+            "type": "string",
+            "title": {
+              "en": "Episode URL"
+            },
+            "example": "https://www.relay.fm/cortex/178"
+          },
+          {
+            "name": "episode_media_url",
+            "type": "string",
+            "title": {
+              "en": "Media URL"
+            },
+            "example": "https://traffic.libsyn.com/cortex/Cortex_178.mp3"
+          },
+          {
+            "name": "show_name",
+            "type": "string",
+            "title": {
+              "en": "Show Name"
+            },
+            "example": "Cortex"
+          },
+          {
+            "name": "show_slug",
+            "type": "string",
+            "title": {
+              "en": "Show Slug"
+            },
+            "example": "cortex"
+          },
+          {
+            "name": "episode_number",
+            "type": "number",
+            "title": {
+              "en": "Episode Number"
+            },
+            "example": 178
+          },
+          {
+            "name": "episode_subtitle",
+            "type": "string",
+            "title": {
+              "en": "Episode Subtitle"
+            },
+            "example": "Myke talks to Jason Schreier about..."
+          },
+          {
+            "name": "episode_duration",
+            "type": "number",
+            "title": {
+              "en": "Duration (seconds)"
+            },
+            "example": 3664
+          },
+          {
+            "name": "episode_published",
+            "type": "string",
+            "title": {
+              "en": "Published Date"
+            },
+            "example": "Mon, 27 Apr 2026 11:30:00 GMT"
+          }
+        ],
+        "args": [
+          {
+            "name": "show",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "any",
+                "title": {
+                  "en": "Any show"
+                }
+              },
+              {
+                "id": "analogue",
+                "title": {
+                  "en": "Analog(ue)"
+                }
+              },
+              {
+                "id": "bonanza",
+                "title": {
+                  "en": "BONANZA"
+                }
+              },
+              {
+                "id": "b-sides",
+                "title": {
+                  "en": "B-Sides"
+                }
+              },
+              {
+                "id": "clockwise",
+                "title": {
+                  "en": "Clockwise"
+                }
+              },
+              {
+                "id": "conduit",
+                "title": {
+                  "en": "Conduit"
+                }
+              },
+              {
+                "id": "connected",
+                "title": {
+                  "en": "Connected"
+                }
+              },
+              {
+                "id": "cortex",
+                "title": {
+                  "en": "Cortex"
+                }
+              },
+              {
+                "id": "departures",
+                "title": {
+                  "en": "Departures"
+                }
+              },
+              {
+                "id": "focused",
+                "title": {
+                  "en": "Focused"
+                }
+              },
+              {
+                "id": "mpu",
+                "title": {
+                  "en": "Mac Power Users"
+                }
+              },
+              {
+                "id": "material",
+                "title": {
+                  "en": "Material"
+                }
+              },
+              {
+                "id": "paperplaces",
+                "title": {
+                  "en": "Paper Places"
+                }
+              },
+              {
+                "id": "rd",
+                "title": {
+                  "en": "Reconcilable Differences"
+                }
+              },
+              {
+                "id": "roboism",
+                "title": {
+                  "en": "Roboism"
+                }
+              },
+              {
+                "id": "backmarkers",
+                "title": {
+                  "en": "The Backmarkers"
+                }
+              },
+              {
+                "id": "penaddict",
+                "title": {
+                  "en": "The Pen Addict"
+                }
+              },
+              {
+                "id": "tc",
+                "title": {
+                  "en": "Thoroughly Considered"
+                }
+              },
+              {
+                "id": "upgrade",
+                "title": {
+                  "en": "Upgrade"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "new_episode_released"
+      }
+    ]
+  }
+}

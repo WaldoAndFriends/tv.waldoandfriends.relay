@@ -1,0 +1,36 @@
+{
+  "id": "tv.waldoandfriends.relay",
+  "version": "1.0.3",
+  "compatibility": ">=12.4.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "brandColor": "#333f48",
+  "name": {
+    "en": "Relay.fm"
+  },
+  "description": {
+    "en": "Keep up-to-date with Relay.fm podcasts"
+  },
+  "category": [
+    "internet"
+  ],
+  "permissions": [],
+  "api": {
+    "check": {
+      "method": "POST",
+      "path": "/check"
+    }
+  },
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Wouter Janson-Korhorn",
+    "email": "wouterjanson@icloud.com"
+  },
+  "source": "https://github.com/WaldoAndFriends/tv.waldoandfriends.relay"
+}

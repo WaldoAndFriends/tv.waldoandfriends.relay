@@ -1,0 +1,14 @@
+{
+  "1.0.0": {
+    "en": "First version!"
+  },
+  "1.0.1": {
+    "en": "Global tags in favour of action flow card"
+  },
+  "1.0.2": {
+    "en": "Fetch initial data in batches to avoid accessive memory usage"
+  },
+  "1.0.3": {
+    "en": "Fix token seeding"
+  }
+}
