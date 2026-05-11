@@ -10,5 +10,8 @@
   },
   "1.0.3": {
     "en": "Fix token seeding"
+  },
+  "1.0.4": {
+    "en": "Fix episode number parsing from main feed"
   }
 }
