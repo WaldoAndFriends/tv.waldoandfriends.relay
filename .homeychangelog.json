@@ -16,5 +16,8 @@
   },
   "1.0.5": {
     "en": "Trim flow token values"
+  },
+  "1.0.6": {
+    "en": "Reduce memory usage to avoid crashes"
   }
 }
