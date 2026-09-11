@@ -41,9 +41,15 @@ module.exports = class RelayApp extends Homey.App {
 
   async _createGlobalTokens() {
     const tokenDefs = [
-      { suffix: 'episode_title', type: 'string', label: 'Episode Title', example: '178: The Process of Investigative Reporting' },
-      { suffix: 'episode_media_url', type: 'string', label: 'Media URL', example: 'https://traffic.libsyn.com/cortex/Cortex_178.mp3' },
-      { suffix: 'episode_number', type: 'number', label: 'Episode Number', example: 178 },
+      {
+        suffix: 'episode_title', type: 'string', label: 'Episode Title', example: '178: The Process of Investigative Reporting',
+      },
+      {
+        suffix: 'episode_media_url', type: 'string', label: 'Media URL', example: 'https://traffic.libsyn.com/cortex/Cortex_178.mp3',
+      },
+      {
+        suffix: 'episode_number', type: 'number', label: 'Episode Number', example: 178,
+      },
     ];
     for (const show of SHOWS) {
       if (!show.slug) continue;
