@@ -13,5 +13,8 @@
   },
   "1.0.4": {
     "en": "Fix episode number parsing from main feed"
+  },
+  "1.0.5": {
+    "en": "Trim flow token values"
   }
 }
